@@ -26,20 +26,33 @@ const InputDetails = ({ generateLink }) => {
   const dtStart = React.useRef();
   const dtEnd = React.useRef();
   const descRef = React.useRef();
+  const eventTitleRef = React.useRef();
 
   return (
     <div>
       <form>
+        <Input
+          type="text"
+          placeholder="Your Event Title"
+          name="title"
+          ref={eventTitleRef}
+        />
+        <Input
+          type="text"
+          placeholder="Enter the description here"
+          name="description"
+          ref={descRef}
+        />
         <Input name="eventStart" type="datetime-local" ref={dtStart} />
         <Input name="eventEnd" type="datetime-local" ref={dtEnd} />
-        <Input type="text" name="description" ref={descRef} />
         <Button
           onClick={(e) => {
             e.preventDefault();
             generateLink({
+              title: eventTitleRef.current.value,
+              description: descRef.current.value,
               startDate: dtStart.current.value,
               endDate: dtEnd.current.value,
-              description: descRef.current.value,
             });
           }}
         >
