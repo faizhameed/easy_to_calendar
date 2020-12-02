@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ThemeContext from "../context/theme-context";
 
 const Input = styled.input`
   padding: 0.5em;
@@ -45,19 +46,21 @@ const InputDetails = ({ generateLink }) => {
         />
         <Input name="eventStart" type="datetime-local" ref={dtStart} />
         <Input name="eventEnd" type="datetime-local" ref={dtEnd} />
-        <Button
-          onClick={(e) => {
-            e.preventDefault();
-            generateLink({
-              title: eventTitleRef.current.value,
-              description: descRef.current.value,
-              startDate: dtStart.current.value,
-              endDate: dtEnd.current.value,
-            });
-          }}
-        >
-          Generate Link
-        </Button>
+        <ThemeContext.Provider>
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              generateLink({
+                title: eventTitleRef.current.value,
+                description: descRef.current.value,
+                startDate: dtStart.current.value,
+                endDate: dtEnd.current.value,
+              });
+            }}
+          >
+            Generate Link
+          </Button>
+        </ThemeContext.Provider>
       </form>
     </div>
   );
