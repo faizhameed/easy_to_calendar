@@ -1,8 +1,13 @@
 import React from "react";
 
-const Content = () => {
+const Content = (props) => {
+ console.log(props)
   return (
     <div title="Add to Calendar" className="addevent">
+       <div>Mode:{props.check}</div>
+      <button onClick={props.toggleMode}>
+      toggle
+      </button>
       {/* Add to Calendar
       <p className="start">06-11-2020 08:00</p>
       <p className="end">06-11-2020 10:00</p>
