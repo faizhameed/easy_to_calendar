@@ -27,6 +27,7 @@ const InputDetails = ({ generateLink }) => {
   const dtEnd = React.useRef();
   const descRef = React.useRef();
   const eventTitleRef = React.useRef();
+  const locationRef = React.createRef();
 
   return (
     <div>
@@ -43,6 +44,7 @@ const InputDetails = ({ generateLink }) => {
           name="description"
           ref={descRef}
         />
+        <Input type ='text' placeholder='Location or link to the event' ref={locationRef}/>
         <Input name="eventStart" type="datetime-local" ref={dtStart} />
         <Input name="eventEnd" type="datetime-local" ref={dtEnd} />
           <Button
@@ -51,6 +53,7 @@ const InputDetails = ({ generateLink }) => {
               generateLink({
                 title: eventTitleRef.current.value,
                 description: descRef.current.value,
+                location:locationRef.current.value,
                 startDate: dtStart.current.value,
                 endDate: dtEnd.current.value,
               });
