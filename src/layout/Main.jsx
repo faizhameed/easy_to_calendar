@@ -13,21 +13,39 @@ const Main = ({ children }) => {
   const generateLink = (data) => {
     data.description.replace(" ", "+");
     data.title.replace(" ", "+");
+    data.location.replace(" ",'+')
     data.startDate = moment(data.startDate).format("YYYYMMDDTHHMMSS");
     data.endDate = moment(data.endDate).format("YYYYMMDDTHHMMSS");
     setState({
       data,
-      googleLink: `https://www.google.com/calendar/render?action=TEMPLATE&text=${data.title}&dates=${data.startDate}/${data.endDate}&details=${data.description}&location=Waldorf+Astoria,+301+Park+Ave+,+New+York,+NY+10022&sf=true&output=xml`,
+      googleLink: `https://www.google.com/calendar/render?action=TEMPLATE&text=${data.title}&dates=${data.startDate}/${data.endDate}&details=${data.description}&location=${data.location}=true&output=xml`,
     });
   };
-  return (
+
+  const copyToClipboard = (e) => {
+    textAreaRef.current.select();
+    document.execCommand('copy');
+    // This is just personal preference.
+    // I prefer to not show the whole text area selected.
+    e.target.focus();
+    setCopySuccess('Copied!');
+  };
+
+
+
+  return    (
     <div>
       <Header />
       <InputDetails generateLink={generateLink} />
       <div>{children}</div>
-      <p>Google Link</p>
-      <div>
-        <p>{state.googleLink}</p>
+      <div>{
+        (state.googleLink)&&  
+
+       
+        <div><a href={state.googleLink}>Add to Calendar Generated</a>
+        <button>Copy Link</button>
+        </div>
+        }
       </div>
     </div>
   );
