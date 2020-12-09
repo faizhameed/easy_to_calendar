@@ -1,8 +1,8 @@
 import moment from "moment";
-import React, { useState,useRef } from "react";
+import React, { useState, useRef } from "react";
 import Header from "../components/Header";
 import InputDetails from "../components/InputDetails";
-import {TextArea } from "./Main.sc";
+import { TextArea } from "./Main.sc";
 
 const Main = ({ children }) => {
   const [state, setState] = useState({
@@ -10,9 +10,9 @@ const Main = ({ children }) => {
       description: "the+no+description",
     },
     googleLink: "",
-    copied:false,
+    copied: false,
   });
-  const textAreaRef   = useRef()
+  const textAreaRef = useRef();
   const generateLink = (data) => {
     data.description.replace(" ", "+");
     data.title.replace(" ", "+");
@@ -27,11 +27,11 @@ const Main = ({ children }) => {
 
   const copyToClipboard = (e) => {
     textAreaRef.current.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     // This is just personal preference.
     // I prefer to not show the the whole text area selected.
     e.target.focus();
-   setState({copied:true})
+    setState({ copied: true });
   };
 
   return (
@@ -40,11 +40,10 @@ const Main = ({ children }) => {
       <InputDetails generateLink={generateLink} />
       <div>{children}</div>
       <div>
-   
-          <div>
-           <TextArea ref ={textAreaRef} value ={state.googleLink}/>
-            <button onClick={copyToClipboard}>Copy Link</button>
-          </div>
+        <div>
+          <TextArea ref={textAreaRef} value={state.googleLink} />
+          <button onClick={copyToClipboard}>Copy Link</button>
+        </div>
       </div>
     </div>
   );
