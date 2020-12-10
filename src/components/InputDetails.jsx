@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Input = styled.input`
   padding: 0.5em;
-  margin: 0.5em;
+  margin: 0.5em 0;
   color: ${(props) => props.inputColor || "palevioletred"};
   background: papayawhip;
   border: none;
@@ -15,7 +15,7 @@ const Button = styled.button`
   display: block;
   color: palevioletred;
   font-size: 1em;
-  margin: 0.5em;
+  margin: 0.5em 0;
   padding: 0.5em;
   border: 2px solid palevioletred;
   border-radius: 3px;
@@ -44,23 +44,27 @@ const InputDetails = ({ generateLink }) => {
           name="description"
           ref={descRef}
         />
-        <Input type ='text' placeholder='Location or link to the event' ref={locationRef}/>
+        <Input
+          type="text"
+          placeholder="Location or link to the event"
+          ref={locationRef}
+        />
         <Input name="eventStart" type="datetime-local" ref={dtStart} />
         <Input name="eventEnd" type="datetime-local" ref={dtEnd} />
-          <Button
-            onClick={(e) => {
-              e.preventDefault();
-              generateLink({
-                title: eventTitleRef.current.value,
-                description: descRef.current.value,
-                location:locationRef.current.value,
-                startDate: dtStart.current.value,
-                endDate: dtEnd.current.value,
-              });
-            }}
-          >
-            Generate Link
-          </Button>
+        <Button
+          onClick={(e) => {
+            e.preventDefault();
+            generateLink({
+              title: eventTitleRef.current.value,
+              description: descRef.current.value,
+              location: locationRef.current.value,
+              startDate: dtStart.current.value,
+              endDate: dtEnd.current.value,
+            });
+          }}
+        >
+          Generate Link
+        </Button>
       </form>
     </div>
   );

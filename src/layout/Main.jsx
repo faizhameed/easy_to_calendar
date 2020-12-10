@@ -2,7 +2,7 @@ import moment from "moment";
 import React, { useState, useRef } from "react";
 import Header from "../components/Header";
 import InputDetails from "../components/InputDetails";
-import { TextArea } from "./Main.sc";
+import { TextArea, MainContent } from "./Main.sc";
 
 const Main = ({ children }) => {
   const [state, setState] = useState({
@@ -35,7 +35,7 @@ const Main = ({ children }) => {
   };
 
   return (
-    <div>
+    <MainContent>
       <Header />
       <InputDetails generateLink={generateLink} />
       <div>{children}</div>
@@ -45,7 +45,7 @@ const Main = ({ children }) => {
           <button onClick={copyToClipboard}>Copy Link</button>
         </div>
       </div>
-    </div>
+    </MainContent>
   );
 };
 
