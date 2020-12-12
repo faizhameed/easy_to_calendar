@@ -32,24 +32,29 @@ const InputDetails = ({ generateLink }) => {
   return (
     <div>
       <form>
+        <div>Title</div>
         <Input
           type="text"
           placeholder="Your Event Title"
           name="title"
           ref={eventTitleRef}
         />
+        <div>Description</div>
         <Input
           type="text"
           placeholder="Enter the description here"
           name="description"
           ref={descRef}
         />
+        <div>Location</div>
         <Input
           type="text"
           placeholder="Location or link to the event"
           ref={locationRef}
         />
+        <div>Start Date</div>
         <Input name="eventStart" type="datetime-local" ref={dtStart} />
+        <div>End Date</div>
         <Input name="eventEnd" type="datetime-local" ref={dtEnd} />
         <Button
           onClick={(e) => {
