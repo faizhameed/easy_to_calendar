@@ -38,11 +38,12 @@ const Main = ({ children }) => {
     <MainContent>
       <Header />
       <InputDetails generateLink={generateLink} />
-      <div>{children}</div>
       <div>
         <div>
           <TextArea ref={textAreaRef} value={state.googleLink} />
-          <button onClick={copyToClipboard}>Copy Link</button>
+          <div>
+            <button onClick={copyToClipboard}>Copy Link</button>
+          </div>
         </div>
       </div>
     </MainContent>
