@@ -2,7 +2,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header>
+    <header style={{ maxWidth: "650px" }}>
       <h1>Generate Calendar Invite Link</h1>
       <p>
         Generate goto calendar link with the event description for any users to
