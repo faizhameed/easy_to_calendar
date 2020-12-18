@@ -1,10 +1,11 @@
 import moment from "moment";
 import React, { useState, useRef } from "react";
+import styled from "styled-components";
 import Header from "../components/Header";
 import InputDetails from "../components/InputDetails";
 import { TextArea, MainContent } from "./Main.sc";
 
-const Main = ({ children }) => {
+const Main = () => {
   const [state, setState] = useState({
     data: {
       description: "the+no+description",
@@ -25,6 +26,17 @@ const Main = ({ children }) => {
     });
   };
 
+  const Button = styled.button`
+    display: block;
+    color: palevioletred;
+    font-size: 1em;
+    margin: 0.5em 0;
+    padding: 0.5em;
+    border: 2px solid palevioletred;
+    border-radius: 3px;
+    cursor: pointer;
+    background: papayawhip;
+  `;
   const copyToClipboard = (e) => {
     textAreaRef.current.select();
     document.execCommand("copy");
@@ -42,7 +54,7 @@ const Main = ({ children }) => {
         <div>
           <TextArea ref={textAreaRef} value={state.googleLink} />
           <div>
-            <button onClick={copyToClipboard}>Copy Link</button>
+            <Button onClick={copyToClipboard}>Copy Link</Button>
           </div>
         </div>
       </div>
