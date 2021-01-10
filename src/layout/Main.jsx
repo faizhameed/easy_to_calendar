@@ -21,6 +21,7 @@ const Main = () => {
     data.startDate = moment(data.startDate).format("YYYYMMDDTHHMMSS");
     data.endDate = moment(data.endDate).format("YYYYMMDDTHHMMSS");
     setState({
+      ...state,
       data,
       googleLink: `https://www.google.com/calendar/render?action=TEMPLATE&text=${data.title}&dates=${data.startDate}/${data.endDate}&details=${data.description}&location=${data.location}=true&output=xml`,
     });
@@ -36,6 +37,7 @@ const Main = () => {
     border-radius: 3px;
     cursor: pointer;
     background: papayawhip;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   `;
   const copyToClipboard = (e) => {
     textAreaRef.current.select();
